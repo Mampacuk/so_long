@@ -126,7 +126,6 @@ void			ft_putspritepixel(t_parsed *res, int i, int j);
 void			ft_initexit(t_parsed *res, int posx, int posy);
 void			ft_putmoves(t_parsed *res);
 void			ft_triggervictory(t_parsed *res);
-void			ft_triggervictory(t_parsed *res);
 void			ft_triggerloss(t_parsed *res);
 void			ft_animatefire(t_parsed *res);
 

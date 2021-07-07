@@ -15,7 +15,7 @@
 void	ft_triggervictory(t_parsed *res)
 {
 	res->scr.victory = mlx_new_window(res->scr.mlx, res->texwin.width,
-			res->texwin.height, "so long... and thanks for all fish!");
+			res->texwin.height, "so long... and thanks for all the fish!");
 	mlx_hook(res->scr.victory, 2, 1L << 0, ft_mlx_pressed, &res->keys);
 	mlx_put_image_to_window(res->scr.mlx, res->scr.victory,
 		res->texwin.ptr, 0, 0);
