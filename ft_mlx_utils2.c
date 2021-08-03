@@ -12,6 +12,14 @@
 
 #include "so_long.h"
 
+int	ft_mlx_terminate(int keycode, t_keys *keys)
+{
+	(void)keycode;
+	(void)keys;
+	exit(0);
+	return (0);
+}
+
 int	ft_mlx_pressed(int keycode, t_keys *keys)
 {
 	if (keycode == 53)

@@ -128,5 +128,6 @@ void			ft_putmoves(t_parsed *res);
 void			ft_triggervictory(t_parsed *res);
 void			ft_triggerloss(t_parsed *res);
 void			ft_animatefire(t_parsed *res);
+int				ft_mlx_terminate(int keycode, t_keys *keys);
 
 #endif

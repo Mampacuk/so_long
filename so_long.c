@@ -35,8 +35,9 @@ int	main(int argc, char **argv)
 			res.unitsize * res.map.w, res.unitsize * res.map.h);
 	res.scr.img.addr = mlx_get_data_addr(res.scr.img.ptr,
 			&res.scr.img.bpp, &res.scr.img.linelen, &res.scr.img.endian);
-	mlx_hook(res.scr.win, 2, 1L << 0, ft_mlx_pressed, &(res.keys));
-	mlx_hook(res.scr.win, 3, 1L << 1, ft_mlx_released, &(res.keys));
+	mlx_hook(res.scr.win, 2, 1L << 0, ft_mlx_pressed, &res.keys);
+	mlx_hook(res.scr.win, 3, 1L << 1, ft_mlx_released, &res.keys);
+	mlx_hook(res.scr.win, 17, 1L << 17, ft_mlx_terminate, &res.keys);
 	mlx_loop_hook(res.scr.mlx, ft_render, &res);
 	mlx_loop(res.scr.mlx);
 }
