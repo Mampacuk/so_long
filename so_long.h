@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/11 21:30:00 by aisraely          #+#    #+#             */
+/*   Updated: 2022/07/11 21:30:01 by aisraely         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -14,38 +26,39 @@
 
 typedef struct s_keys
 {
-	int			up;
-	int			down;
-	int			left;
-	int			right;
-	int			check;
+	char	up;
+	char	down;
+	char	left;
+	char	right;
+	char	lock;
+	int		keycode;
 }				t_keys;
 
 typedef struct s_img
 {
-	void		*ptr;
-	char		*addr;
-	int			bpp;
-	int			linelen;
-	int			endian;
-	int			width;
-	int			height;
+	void	*ptr;
+	char	*addr;
+	int		bpp;
+	int		linelen;
+	int		endian;
+	int		width;
+	int		height;
 }				t_img;
 
 typedef struct s_screen
 {
-	void		*mlx;
-	void		*win;
-	void		*loss;
-	void		*victory;
-	t_img		img;
+	void	*mlx;
+	void	*win;
+	void	*loss;
+	void	*victory;
+	t_img	img;
 }				t_screen;
 
 typedef struct s_map
 {
-	int			w;
-	int			h;
-	char		**m;
+	int		w;
+	int		h;
+	char	**m;
 }				t_map;
 
 typedef struct s_player
@@ -98,8 +111,8 @@ void			ft_writerow(char *line, t_parsed *res, int x);
 int				get_next_line(int fd, char **line);
 char			*ft_strchr(char *s, int c);
 void			ft_exit(char *str);
-void			ft_mlx_pixel_put(t_screen *data, int x, int y, int color);
-unsigned int	ft_mlx_get_color(t_img *imgstruct, int x, int y);
+void			ft_mlx_pixel_set(t_img *image, int x, int y, int color);
+unsigned int	ft_mlx_pixel_get(t_img *image, int x, int y);
 int				ft_mlx_pressed(int keycode, t_keys *keys);
 int				ft_mlx_released(int keycode, t_keys *keys);
 int				ft_check_extension(char *path, char *ext);

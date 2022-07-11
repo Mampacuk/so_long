@@ -6,7 +6,7 @@
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 19:06:15 by aisraely          #+#    #+#             */
-/*   Updated: 2021/07/06 19:06:16 by aisraely         ###   ########.fr       */
+/*   Updated: 2022/07/11 21:27:22 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ void	ft_initparser(t_parsed *res)
 	res->player.moves = 0;
 	res->time = 0;
 	res->state = 1;
-	res->keys.check = 1;
+	res->keys.lock = 1;
+	res->keys.keycode = -1;
 }
 
 void	ft_setunitsize(t_parsed *res)

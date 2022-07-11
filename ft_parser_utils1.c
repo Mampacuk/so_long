@@ -6,7 +6,7 @@
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 19:05:35 by aisraely          #+#    #+#             */
-/*   Updated: 2021/07/06 19:05:37 by aisraely         ###   ########.fr       */
+/*   Updated: 2022/07/11 20:13:46 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ft_getworldmap(char *mappath, t_parsed *res)
 	{
 		r = get_next_line(fd, &line);
 		ft_writerow(line, res, x++);
+		free(line);
 		if (!r)
 			break ;
 	}
@@ -34,7 +35,6 @@ void	ft_getworldmap(char *mappath, t_parsed *res)
 	if (res->player.goal < 1)
 		ft_exit("Too few collectibles to start the game.");
 	ft_checkwalls(res->map.m, res->map.h, res->map.w);
-	free(line);
 	close(fd);
 }
 
@@ -56,12 +56,12 @@ int	ft_getmapheight(char *mappath)
 		height++;
 		if (ft_strchr(line, 'E'))
 			exit = 1;
+		free(line);
 		if (!r)
 			break ;
 	}
 	if (!exit)
 		ft_exit("No exit present on the map.");
-	free(line);
 	close(fd);
 	return (height);
 }
@@ -84,10 +84,10 @@ int	ft_getmapwidth(char *mappath)
 			width = ft_strlen(line);
 		if (ft_strlen(line) != width)
 			ft_exit("The map must be rectangular.");
+		free(line);
 		if (!r)
 			break ;
 	}
-	free(line);
 	close(fd);
 	return (width);
 }

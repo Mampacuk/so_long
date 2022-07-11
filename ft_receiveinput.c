@@ -6,7 +6,7 @@
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 19:09:49 by aisraely          #+#    #+#             */
-/*   Updated: 2021/07/06 19:09:50 by aisraely         ###   ########.fr       */
+/*   Updated: 2022/07/11 21:28:59 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_receiveinput1(t_parsed *res)
 
 void	ft_receiveinput2(t_parsed *res)
 {
-	if (res->keys.right && !res->keys.left && !res->keys.down && !res->keys.up)
+	if (res->keys.left && !res->keys.right && !res->keys.down && !res->keys.up)
 	{
 		if (!(res->map.m[res->player.x][res->player.y - 1] == '1'))
 		{
@@ -57,7 +57,7 @@ void	ft_receiveinput2(t_parsed *res)
 			else if (res->map.m[res->player.x][res->player.y] == 'F')
 				ft_triggerloss(res);
 			res->map.m[res->player.x][res->player.y] = 'P';
-			res->keys.right = 0;
+			res->keys.left = 0;
 		}
 	}
 }
@@ -89,7 +89,7 @@ void	ft_receiveinput3(t_parsed *res)
 
 void	ft_receiveinput4(t_parsed *res)
 {
-	if (res->keys.left && !res->keys.up && !res->keys.down && !res->keys.right)
+	if (res->keys.right && !res->keys.up && !res->keys.down && !res->keys.left)
 	{
 		if (!(res->map.m[res->player.x][res->player.y + 1] == '1'))
 		{
@@ -107,7 +107,7 @@ void	ft_receiveinput4(t_parsed *res)
 			else if (res->map.m[res->player.x][res->player.y] == 'F')
 				ft_triggerloss(res);
 			res->map.m[res->player.x][res->player.y] = 'P';
-			res->keys.left = 0;
+			res->keys.right = 0;
 		}
 	}
 }

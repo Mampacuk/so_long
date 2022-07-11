@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_utils.c                                        :+:      :+:    :+:   */
+/*   ft_mlx_utils1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aisraely <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 18:45:59 by aisraely          #+#    #+#             */
-/*   Updated: 2021/05/11 18:46:00 by aisraely         ###   ########.fr       */
+/*   Updated: 2022/07/11 21:19:08 by aisraely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_mlx_pixel_put(t_screen *data, int x, int y, int color)
+void	ft_mlx_pixel_set(t_img *image, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = data->img.addr + (y * data->img.linelen + x * (data->img.bpp / 8));
+	dst = image->addr + (y * image->linelen + x * (image->bpp / 8));
 	*(unsigned int *)dst = color;
 }
 
-unsigned int	ft_mlx_get_color(t_img *imgstruct, int x, int y)
+unsigned int	ft_mlx_pixel_get(t_img *image, int x, int y)
 {
 	char	*dst;
 
-	dst = imgstruct->addr + (y * imgstruct->linelen + x * (imgstruct->bpp / 8));
+	dst = image->addr + (y * image->linelen + x * (image->bpp / 8));
 	return (*(unsigned int *)dst);
 }
 
@@ -71,15 +71,15 @@ void	ft_putspritepixel(t_parsed *res, int i, int j)
 	res->texy = (int)((float)res->x / res->unitsize * res->sprite.height);
 	if (res->map.m[i][j] != 'F')
 	{
-		if (ft_mlx_get_color(&res->sprite, res->texx, res->texy) != 0xFF000000)
-			ft_mlx_pixel_put(&res->scr, j * res->unitsize + res->y,
+		if (ft_mlx_pixel_get(&res->sprite, res->texx, res->texy) != 0xFF000000)
+			ft_mlx_pixel_set(&res->scr.img, j * res->unitsize + res->y,
 				i * res->unitsize
-				+ res->x, ft_mlx_get_color(&res->sprite, res->texx, res->texy));
+				+ res->x, ft_mlx_pixel_get(&res->sprite, res->texx, res->texy));
 	}
 	else
 	{
-		ft_mlx_pixel_put(&res->scr, j * res->unitsize + res->y,
+		ft_mlx_pixel_set(&res->scr.img, j * res->unitsize + res->y,
 			i * res->unitsize
-			+ res->x, ft_mlx_get_color(&res->sprite, res->texx, res->texy));
+			+ res->x, ft_mlx_pixel_get(&res->sprite, res->texx, res->texy));
 	}
 }
